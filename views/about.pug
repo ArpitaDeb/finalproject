@@ -1,0 +1,16 @@
+extends ./layout.pug
+include sub-mixin
+include menu-mixin
+include product-mixin
+block menu
+    +subscription
+    +menu
+block scripts
+    link(href='/css/index.css', rel='stylesheet')
+    link(href='/css/nav.css', rel='stylesheet')
+    script(src='/js/subscription.js')
+block content
+    h1 ABOUT US
+  
+block foot
+    div Reserve for footer place

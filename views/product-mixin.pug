@@ -1,0 +1,12 @@
+mixin product(product)
+    img(src=product.image, alt='image is loading.Please wait!', class ='productImage')
+    p= product.productName
+    form(method='get')
+        label(for 'price') Price:
+        label= product.price
+        input(type='number', name ='quantity',min ='1', max='10', length =2)
+        input(type='button', name ='add', value='Add to Cart', action='post')
+  
+
+ 
+    

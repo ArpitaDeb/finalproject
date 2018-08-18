@@ -1,0 +1,52 @@
+extends ./layout.pug
+include sub-mixin
+include menu-mixin
+block menu
+    +subscription
+    +menu
+block scripts
+    link(href='/css/nav.css', rel='stylesheet')
+    link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous")
+    link(href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css')
+    link(href='/css/signup.css', rel='stylesheet')
+    script(src='/js/subscription.js')
+block content
+  .form-style-10
+  
+    h1
+      | Sign Up Now!
+      span Enter your phone number and email address to receive fresh daily menu and promotion code
+    form(action= "/" method="POST")
+      .section
+        span 1
+        | First Name &amp; Address
+      .inner-wrap
+        label
+          | Your Full Name 
+          input(type='text' name='field1')
+        label
+          | Address 
+          textarea(name='field2')
+      .section
+        span 2
+        | Email &amp; Phone
+      .inner-wrap
+        label
+          | Email Address 
+          input(type='email' name='field3')
+        label
+          | Phone Number 
+          input(type='text' name='field4')
+      .section
+        span 3
+        | Passwords
+      .inner-wrap
+        label
+          | Password 
+          input(type='password' name='field5')
+      .button-section
+        input(type='submit' name='Sign Up')
+        span.privacy-policy
+          input(type='checkbox' name='field7')
+          | You agree to our Terms and Policy.
+      p= csrfToken

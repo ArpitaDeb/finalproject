@@ -1,0 +1,42 @@
+.products {
+    display: flex;
+    flex-wrap: wrap;
+  }
+.starter-menu {  
+    padding: 2%;
+    flex-grow: 1;
+    flex-basis: 16%;
+    display: flex; /* so child elements can use flexbox stuff too! */
+  }
+  .starter-image img {
+    max-width: 100%;
+    width:271px;
+    height:180px;
+    border:1px gray solid;
+    cursor: pointer;
+    display: block;
+    position: relative;
+  }
+  /*
+.image {
+   
+   
+}
+*/
+.product-info  {
+    position: absolute;
+    background: rgb(0, 0, 0);
+   
+    color: #f1f1f1;
+    width: 241px;
+ 
+    transition: .5s ease;
+    font-size: 14px;
+    text-align: center;
+    line-height: 1px;
+}
+.starter-menu:hover .product-info {
+    opacity: 1;
+  
+    
+}

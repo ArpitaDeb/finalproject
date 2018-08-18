@@ -1,0 +1,21 @@
+extends ./layout.pug
+include menu-mixin
+include product-mixin
+block header
+block scripts
+    link(link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous")
+    script(src='/js/subscription.js')
+block content
+    h1 STARTER MENU
+    .product-container
+        .row
+            each product in products
+                .col-sm-5.col-md-4
+                    .thumbnail(width= '271px' height='180px')
+                    img(src= product.image alt='Please wait' width= '271px' height='180px' border='1px gray solid')
+                    .caption
+                        h3= product.name
+                        p Price: $ #{product.price}
+                        p= product.productDescription
+                        a.btn.btn-primary(href='#' role='Add') Add to Cart
+                

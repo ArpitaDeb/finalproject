@@ -1,0 +1,25 @@
+extends ./layout.pug
+include sub-mixin
+include menu-mixin
+include product-mixin
+block scripts
+    link(href='/css/menu.css', rel='stylesheet')
+    link(href='/css/nav.css', rel='stylesheet')
+    link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous")
+    script(src='/js/subscription.js')
+block menu
+    +subscription
+    +menu
+block content
+    h1 STARTER MENU
+    .products
+        each product in products
+            .starter-menu
+                .starter-image
+                    img(src=product.imagePath, class='image', alt='image is loading.Please wait!')
+                    .product-info
+                        h6 #{product.name} - Price: #{product.price}
+                        i(class="fas fa-shopping-cart" ) Buy
+                    
+block foot
+    div Reserve for footer place

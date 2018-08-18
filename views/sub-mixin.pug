@@ -1,0 +1,17 @@
+mixin subscription
+    .subcription
+        form(id="email_subscribe" action='subscribe' method='get' enctype='application/x-www-form-urlencoded')
+            label(for="subscription") Enter your phone number and email address to receive fresh daily menu and promotion code: 
+            input(type="phone" name ="phone" id="phone" placeholder="Enter phone number" size ="20" required)
+            input(type="email" name ="email" id="email" placeholder="Enter e-mail address" size ="50" required)
+            input(type ="submit" name ="subscribe" value ="Subscribe" id="subscribe_button")
+            i(class="fas fa-users") 
+            a(href='/signup') User Account
+            i(class="fas fa-shopping-cart" )  
+            a(href='/Shopping') Shopping cart
+          
+           
+    .extra-sub
+       
+    
+    
