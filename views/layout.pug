@@ -14,119 +14,139 @@ html(lang='en')
         padding-left: 16px;
         color: black;
         }
-        .menu span {
-        padding-right: 50px;
-        padding-left: 50px;
-        margin-right: 50px;
-        margin-left: 50px;
-        background: ghostwhite;
-        color: black;
-        font-size: 20px;
-        border: 2px thick black;
-        position: float;
-        top: 10px;
-        width:250px;
+       
+        #subscription {
+            background: black;
+        }   
+        #logo {
+            width:10%;
+            height: 50px;
         }
+        #banner {
+            text-align: center;
+            line-height: 50px;
+        }
+        #banner a {
+            color:  #179860 ; 
+            font-size: 15px;
+        
+            font-style: normal;
+        }
+        #banner span i{
+           padding-left:7px;
+           text-align: center;
+            color:  #44b85e ; 
+            font-size: 20px;
           
-        #subscribe_button {
-            background-color:black;
-            border: darkgray;
-            color:gray;
-            font-size:15px;
-            font-family: Arial, Helvetica, sans-serif;
-            vertical-align: center;
+            font-style: normal;
+         
         }
-        #email_subscribe {
-            padding: 10px;
-            margin: 10px;
-            color: white;
-            background-color: black;
-            font-size: 13px;
+
+        span #slogan {
+       
+            margin-left: 10px;
+            color:white;
+            text-align:center;
+            background: black;
+            text-shadow: 2px gray;
+            font-style: italic;
+            font-size:20px;
+            font-weight: bold;
             height:50px;
             position: relative;
+            text-shadow: 0 0 2px #fff;
         }
-        .extra-sub {
-            position: absolute;
+        span .shopping-badge {
+            width: 100px;
+            height: 100px;
+            background: #44b85e; 
+            top:2rem;
+            right:3rem;
+            
+            text-align: center;
+            line-height: 2rem;;
+            font-size: 15px;
+            border-radius: 50%;
+            color:black;
+            -webkit-transition: width 2s; /* Safari */
+            transition: width 2s;
+           
+      
         }
-        #warning {
-            color: red;
-            font-size: 10px;
-            text-decoration: italic;
+        span .badge: hover {
+            background: green;
         }
-        ul {
+        ul.nav-group {
             list-style-type: none;
             margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background-color: black;
-            font-size: 30px;
-        }
-
-        li {
-            float: left;
-            padding-right: 50px;
-            padding-left: 50px;
-            margin-right: 50px;
-            margin-left: 50px;
-            background: ghostwhite;
-            color: black;
+            padding-left:0;
+            height: 60px;
+            line-height: 60px;
             font-size: 25px;
-            font-weight: bold;
-            border: 2px thick black;
-            position: float;
-            top: 10px;
-            width:250px;
-            list-style-type: none;
+            overflow: hidden;
+            background-color:ghostwhite;
+            color: black;
+            align: center;
         }
 
-        li a, .dropbtn {
+        li.nav .nav-dropbtn {
+            float: left;
+            margin: 0px;
+            width: 350px;
+            height: 60px;
+            color: black;
+            background-color:ghostwhite
+         
+        }
+
+        li.nav a, .nav-dropbtn {
             display: inline-block;
-            color: white;
+            color: black;
+            font-weight: bold;
+            width: 350px;
+            height: 60px;
+           
             text-align: center;
-            padding: 14px 16px;
+            
             text-decoration: none;
         }
 
-        li a:hover, .dropdown:hover .dropbtn {
-            background-color: green;
-            color: white;
+       
+        li.nav a:hover, .nav-dropdown:hover .nav-dropbtn {
+            background-color: #44b85e;
+         
             text-decoration: underline;
         }
 
-        li.dropdown {
+        li.nav-dropdown {
             display: inline-block;
-               
         }
-        .dropdown-content {
+
+        .nav-dropdown-content {
             display: none;
             position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            font-size: 15px;
+            background-color: #f9f9f9;      
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
         }
 
-        .dropdown-content a {
+        .nav-dropdown-content a {
             color: black;
             padding: 12px 16px;
+            font-size:20px;
             text-decoration: none;
             display: block;
             text-align: left;
         }
 
-        .dropdown-content a:hover {
-            background-color: #f1f1f1;
-            color: white;
-            }
+        .nav-dropdown-content a:hover {background-color: #179860}
 
-        .dropdown:hover .dropdown-content {
+        .nav-dropdown:hover .nav-dropdown-content {
             display: block;
         }
+            
         
-
   block scripts
-  block style
   body
     block header
     block menu

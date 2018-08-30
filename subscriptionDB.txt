@@ -1,4 +1,0 @@
-db.subscription.insertMany([{'phone number':'3062021090', 'email':'giangtran82@gmail.com', 'subscribe_date':'Aug-13-2018','subscribe_time': '09:00'},
-{'phone number':'3062021091', 'email':'giangtran83@gmail.com', 'subscribe_date':'Aug-12-2018','subscribe_time': '09:00'},])
-
-db.subscription.find().pretty()

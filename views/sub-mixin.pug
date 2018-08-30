@@ -1,17 +1,21 @@
 mixin subscription
-    .subcription
-        form(id="email_subscribe" action='subscribe' method='get' enctype='application/x-www-form-urlencoded')
-            label(for="subscription") Enter your phone number and email address to receive fresh daily menu and promotion code: 
-            input(type="phone" name ="phone" id="phone" placeholder="Enter phone number" size ="20" required)
-            input(type="email" name ="email" id="email" placeholder="Enter e-mail address" size ="50" required)
-            input(type ="submit" name ="subscribe" value ="Subscribe" id="subscribe_button")
-            i(class="fas fa-users") 
-            a(href='/signup') User Account
-            i(class="fas fa-shopping-cart" )  
-            a(href='/Shopping') Shopping cart
-          
-           
-    .extra-sub
-       
-    
-    
+    .subcription(id='subscription') 
+        img(src='img/logo1.png', id='logo', alt='image is loading.Please wait!')
+        span(id='banner') 
+            span(id='slogan') Welcome to Fresh Vietnamese Kitchen. Sign up today to get promotion code and daily fresh menu!!!
+            span
+            span
+                i(class="fas fa-users")
+                span 
+                a(href='/signup') Sign up
+            span
+                i(class="fas fa-users")
+                span 
+                a(href='/signin') User Account
+            span
+                i(class="fas fa-shopping-cart" )  
+                span    
+                a(href='/Shopping') Shopping cart  
+                span
+                if(session.cart)
+                    span(class='shopping-badge') #{session.cart.totalQty}

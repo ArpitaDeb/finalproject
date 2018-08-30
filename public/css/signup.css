@@ -86,7 +86,14 @@
     color: #fff;
     margin-top: -3px;
 }
+.form-style-10 .warning {
+    background: pink;
+    color:red;
+    height: 30px;
+    font-size: 13px
+}
 .form-style-10 input[type="button"]
+{background:  rgb(39, 138, 52);}
 .form-style-10 input[type="submit"]
 {
     background:  rgb(39, 138, 52);
@@ -106,7 +113,7 @@
 .form-style-10 input[type="button"]:hover,
 .form-style-10 input[type="submit"]:hover,
 {
-    background: #rgb(39, 138, 52);
+    background:  rgb(39, 138, 52);}
     -moz-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28);
     -webkit-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28);
     box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28);

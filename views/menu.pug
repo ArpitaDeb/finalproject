@@ -14,12 +14,17 @@ block content
     h1 STARTER MENU
     .products
         each product in products
+            - var link= 'add-to-cart/' + product._id
             .starter-menu
                 .starter-image
+                    h5 #{product.name} 
                     img(src=product.imagePath, class='image', alt='image is loading.Please wait!')
-                    .product-info
-                        h6 #{product.name} - Price: #{product.price}
-                        i(class="fas fa-shopping-cart" ) Buy
+                    .product-info Price: $ #{product.price}
+                        .add-to-cart
+                            <i class="fas fa-shopping-cart"></i>       
+                            a(href= link ) Add to Cart
+                          
+            
                     
 block foot
     div Reserve for footer place

@@ -1,42 +1,70 @@
 .products {
-    display: flex;
-    flex-wrap: wrap;
-  }
+  display: flex;
+  flex-wrap: wrap;
+}
 .starter-menu {  
-    padding: 2%;
-    flex-grow: 1;
-    flex-basis: 16%;
-    display: flex; /* so child elements can use flexbox stuff too! */
-  }
-  .starter-image img {
-    max-width: 100%;
-    width:271px;
-    height:180px;
-    border:1px gray solid;
-    cursor: pointer;
-    display: block;
-    position: relative;
-  }
-  /*
+  padding: 2%;
+  flex-grow: 1;
+  flex-basis: 16%;
+  display: flex; /* so child elements can use flexbox stuff too! */
+}
+.starter-image img {
+  max-width: 100%;
+  width:271px;
+  height:180px;
+  border:1px gray solid;
+  cursor: pointer;
+  display: block;
+  position: relative;
+}
+/*
 .image {
-   
-   
+ 
+ 
 }
 */
 .product-info  {
-    position: absolute;
-    background: rgb(0, 0, 0);
-   
-    color: #f1f1f1;
-    width: 241px;
+  position: aboslute;
+  background: black;
+  opacity: 0;
+  color: white;
+  font-weight: bold;
+  width: 100%;
+  height: 20px;
  
-    transition: .5s ease;
-    font-size: 14px;
-    text-align: center;
-    line-height: 1px;
+  transition: .5s ease;
+  font-size: 14px;
+  text-align: center;
+  line-height: 20px;
 }
 .starter-menu:hover .product-info {
-    opacity: 1;
+  opacity: 1;
+
   
-    
+}
+.product-info .add-to-cart {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+
+  background:black;
+
+  border-top-style: none;
+  border-right-style: none;
+  border-left-style: none;   
+  color: #44b85e;
+  font-size: 13px;
+}
+.product-info a {
+  color: #44b85e;
+}
+
+.product-info .add-to-cart:hover {
+  border: 1px solid #fff;
+  box-shadow: 0 0 10px #44b85e;
+  background:#44b85e;
+  color: black;
+}
+.product-info a:hover {
+  color: black;
 }

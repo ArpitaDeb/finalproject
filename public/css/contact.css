@@ -1,12 +1,12 @@
 .form-style-6{
     font: 95% Arial, Helvetica, sans-serif;
-    max-width: 400px;
+    max-width: 500px;
     margin: 10px auto;
     padding: 16px;
     background: #F7F7F7;
 }
 .form-style-6 h1{
-    background: #43D1AF;
+    background: rgb(39, 138, 52);
     padding: 20px 0;
     font-size: 140%;
     font-weight: 300;
@@ -52,9 +52,9 @@
 .form-style-6 textarea:focus,
 .form-style-6 select:focus
 {
-    box-shadow: 0 0 5px #43D1AF;
+    box-shadow: 0 0 5px rgb(39, 138, 52);
     padding: 3%;
-    border: 1px solid #43D1AF;
+    border: 1px solid rgb(39, 138, 52);
 }
 
 .form-style-6 input[type="submit"],
@@ -64,14 +64,15 @@
     -moz-box-sizing: border-box;
     width: 100%;
     padding: 3%;
-    background: #43D1AF;
+    background: rgb(39, 138, 52);
     border-bottom: 2px solid #30C29E;
     border-top-style: none;
     border-right-style: none;
     border-left-style: none;   
     color: #fff;
+    font-size: 15px;
 }
 .form-style-6 input[type="submit"]:hover,
 .form-style-6 input[type="button"]:hover{
-    background: #2EBC99;
-}
+    background: rgb(39, 138, 52);
+    }

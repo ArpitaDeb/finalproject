@@ -14,12 +14,12 @@ block content
   .form-style-10
   
     h1
-      | Sign Up Now!
-      span Enter your email address to receive fresh daily menu and promotion code
+      | Sign In!
+      span Log in your profile to order today menu!!
     if hasErrors
         .warning
           p= messages
-    form(action= "/signup" method="POST" value=csrfToken)
+    form(action= "/signin" method="POST" value=csrfToken)
       .section
         span 1
         | Email 
@@ -35,5 +35,5 @@ block content
           | Password 
           input(type='password' name='password')
       .button-section
-        input(type='submit' name='Sign Up' value='Sign Up')
+        input(type='submit' name='Sign In' value='Sign In')
     p= csrfToken

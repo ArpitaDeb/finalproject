@@ -1,16 +1,18 @@
 mixin menu
-    ul
-        li
+    ul.nav-group
+        li.nav
             a(href='/') Home
-        li.dropdown
-            a.dropbtn(href='javascript:void(0)') Menu
-            .dropdown-content
+        li.nav-dropdown
+            a.nav-dropbtn(href='javascript:void(0)') Menu
+            .nav-dropdown-content
                 a(href='/menu') Starter
                 a(href='/menu2') Main Course
                 a(href='/menu3') Dessert
-        li
+        li.nav
             a(href='/about') About Us
-        li
+        li.nav
             a(href='/contact') Contact Us
+      
+
       
           
