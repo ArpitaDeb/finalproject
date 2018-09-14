@@ -1,0 +1,66 @@
+
+h3 {
+    padding-left: 50px;
+}
+.collapsible {
+    background-color: rgba(239,181,107);
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: center;
+    outline: none;
+    font-size: 15px;
+  }
+  
+.content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #f1f1f1;
+  }
+#order-table, #detail-table {
+    border-collapse: collapse;
+    width: 100%;
+  
+    text-align: center;
+    width: 100%;
+  
+}
+#order-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: rgb(88, 92, 41);
+    color: white;
+    border:2px solid #ffffff;
+    
+}
+                 
+#detail-table td,#detail-table tr, #detail-table td,#detail-table th{
+    border:2px solid #ffffff;
+    padding-top: 12px;
+    padding-bottom: 12px;   
+   
+}
+#order-table tr:nth-child(even) {
+    background-color: #4CAF50;
+    border:2px solid black;
+    padding-top: 12px;
+    padding-bottom: 12px;
+   
+}
+#detail-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+    border:2px solid black;
+}
+
+               
+
+
+
+  .active, .collapsible:hover {
+    background-color:#45a049;
+  }

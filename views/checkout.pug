@@ -1,0 +1,97 @@
+extends ./layout.pug
+include sub-mixin
+include menu-mixin
+include footer-mixin
+block menu
+    +subscription
+    +menu
+block scripts
+   link(href='/css/nav.css', rel='stylesheet')
+   link(href='/css/checkout.css', rel='stylesheet')
+   link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous")
+  
+block content
+    script(src="https://js.stripe.com/v3/")
+    script(src="https://code.jquery.com/jquery-3.1.1.min.js")
+    script(src="/js/checkout.js")
+    h2 Checkout
+    .row
+        .col-75
+            .container
+                if !noError
+                    .warning
+                        p= errMsg
+                .row
+                  
+                    h3 Shipping Address
+                    form(action='/checkout' method='POST' id='checkout-form')
+                        .row
+                            .col-25
+                                
+                                label(for='fname')
+                                i.fa.fa-user
+                                |  Full Name
+                            .col-75
+                                input#fname(type='text' name='name' placeholder='John M. Doe' required)
+                            .col-25
+                                label(for='email')
+                                i.fa.fa-envelope
+                                |  Email
+                            .col-75    
+                                input#email(type='text' name='email' placeholder='john@example.com' required)
+                            .col-25
+                                label(for='adr')
+                                i.fa.fa-address-card-o
+                                |  Address
+                            .col-75     
+                                input#adr(type='text' name='address' placeholder='542 W. 15th Street' required)
+                            .col-25
+                                label(for='city')
+                                i.fa.fa-institution
+                                |  City
+                            .col-75        
+                                input#city(type='text' name='city' placeholder='New York' required)
+                            .col-25
+                                label(for='state') Province
+                            .col-75     
+                                input#state(type='text' name='state' placeholder='SK' required)
+                            .col-25    
+                                label(for='zip') Postal Code
+                            .col-75            
+                                input#zip(type='text' name='zip' placeholder='10001' required)
+                            
+                            h3 Payment
+                            label(for='fname') Accepted Cards
+                            .icon-container
+                                i.fab.fa-cc-visa(style='color:navy;')
+                                i.fab.fa-cc-amex(style='color:blue;')
+                                i.fab.fa-cc-mastercard(style='color:red;')
+                                i.fab.fa-cc-discover(style='color:orange;')
+                     
+                            #card-element
+                            #card-errors
+                           
+                                
+                            input.btn(type='submit' value='Submit Payment' id='button')
+                                    
+        .col-25
+            .container
+                h4
+                    | Shopping Cart
+                    if(session.cart)
+                        span.price(style='color:black')
+                            i.fa.fa-shopping-cart   
+                            span            #{session.cart.totalQty}
+                each product in products
+                    p
+                        span= product.name
+                        
+                        span.price $ #{product.price}
+                hr
+                p
+                    | Total 
+                    span.price(style='font-weight: bold')  $ #{totalPrice}
+             
+                a(href='/Shopping' id='btn-shop') Go back to Shopping Cart 
+block foot
+    +footer

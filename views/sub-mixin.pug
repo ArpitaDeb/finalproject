@@ -3,19 +3,14 @@ mixin subscription
         img(src='img/logo1.png', id='logo', alt='image is loading.Please wait!')
         span(id='banner') 
             span(id='slogan') Welcome to Fresh Vietnamese Kitchen. Sign up today to get promotion code and daily fresh menu!!!
-            span
-            span
+            span(id='my-account') 
                 i(class="fas fa-users")
-                span 
-                a(href='/signup') Sign up
-            span
-                i(class="fas fa-users")
-                span 
-                a(href='/signin') User Account
-            span
+                a(href='/signin') My Account
+                
                 i(class="fas fa-shopping-cart" )  
                 span    
                 a(href='/Shopping') Shopping cart  
                 span
                 if(session.cart)
-                    span(class='shopping-badge') #{session.cart.totalQty}
+                    span(class='shopping-badge') #{session.cart.totalQty}               
+                

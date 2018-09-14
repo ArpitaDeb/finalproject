@@ -1,7 +1,7 @@
 extends ./layout.pug
 include sub-mixin
 include menu-mixin
-include product-mixin
+include footer-mixin
 block scripts
     link(href='/css/menu.css', rel='stylesheet')
     link(href='/css/nav.css', rel='stylesheet')
@@ -11,7 +11,8 @@ block menu
     +subscription
     +menu
 block content
-    h1 STARTER MENU
+   
+    img(class="img-responsive" src="img/menu.png" alt="Please wait")
     .products
         each product in products
             - var link= 'add-to-cart/' + product._id
@@ -27,4 +28,4 @@ block content
             
                     
 block foot
-    div Reserve for footer place
+   +footer

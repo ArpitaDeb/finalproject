@@ -90,3 +90,6 @@
   -webkit-transition-delay: 0.3s;
   transition-delay: 0.3s;
 }
+.footer {
+  position: fixed;
+}

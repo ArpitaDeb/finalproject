@@ -1,7 +1,7 @@
 extends ./layout.pug
 include sub-mixin
 include menu-mixin
-include product-mixin
+include footer-mixin
 block menu
     +subscription
     +menu
@@ -19,6 +19,9 @@ block content
         // Title
         h2
             | Shopping Bag
+    if !noMessage
+        .success
+            p= successMsg
     if(products) 
             table(id='cart' class="table table-hover table-condensed")
                 thead
@@ -30,9 +33,12 @@ block content
                         th(style='width:10%')
                 tbody
                     each product in products
+                      - var addlink= 'addone/' + product._id
+                      - var removelink ='removeone/' +product._id
                         tr
                             td(data-th='Product')
                                 img(src=product.image)
+                                p(style='font-weight:bold')= product.name
                                 p= product.description
                                     
                             td(data-th='Price') $ #{product.priceunit}
@@ -40,10 +46,11 @@ block content
                                 
                             td.text-center(data-th='Subtotal') $ #{product.price}
                             td.actions(data-th='')
-                                button.btn.btn-info.btn-sm
+                                a.btn.btn-info.btn-sm(href= addlink)
                                     i.fa.fa-plus-square-o
-                                button.btn.btn-danger.btn-sm
-                                    i.fa.fa-minus-square-o
+                                if (product.qty>0)
+                                    a.btn.btn-danger.btn-sm(href= removelink)
+                                        i.fa.fa-minus-square-o
                 tfoot
                     tr.visible-xs
                         td.text-center
@@ -57,11 +64,12 @@ block content
                         td.hidden-xs.text-center
                             strong Total  $ #{totalPrice}
                         td
-                            a.btn.btn-success.btn-block(href='#')
+                            a.btn.btn-success.btn-block(href='/checkout')
                                 | Checkout 
                                 i.fa.fa-angle-right
     
     else 
         h3
             | No products in shopping bag
-        
+block foot
+    +footer

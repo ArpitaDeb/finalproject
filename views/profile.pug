@@ -1,7 +1,7 @@
 extends ./layout.pug
 include sub-mixin
 include menu-mixin
-include product-mixin
+include footer-mixin
 block menu
     +subscription
     +menu
@@ -9,8 +9,38 @@ block scripts
     link(href='/css/index.css', rel='stylesheet')
     link(href='/css/nav.css', rel='stylesheet')
     link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous")
-    script(src='/js/subscription.js')
+    link(href='/css/profile.css', rel='stylesheet')
+    script(type='text/javascript').
+        var orders=!{JSON.stringify(orders)};
+    script(src="/js/profile.js")
 block content
-    h1 User Profile
-    h2 Thank you for your subscription. A confirmation was sent to your email: #{email}.
+    .row
+        col-75
+            h1 My Account
+        col-25
+            a(href='/logout') Sign out
+    hr
     
+   
+    h3 Order History 
+
+    each order in orders
+        .collapsible
+            table#order-table
+                tr
+                    
+                    td #{order.name}
+                    td #{order.address}
+                    td $ #{order.cart.totalPrice}  
+                    td #{order.paymentID}        
+        .content
+            table#detail-table
+                
+                each item in order.items
+                    tr
+                        td Product Name: #{item.name}
+                        td Product Price Unit: $ #{item.priceunit}
+                        td Product Quantity: #{item.qty}
+                        td Product Price: #{item.price}
+block foot
+    +footer

@@ -1,16 +1,32 @@
 extends ./layout.pug
 include sub-mixin
 include menu-mixin
-include product-mixin
+include footer-mixin
 block menu
     +subscription
     +menu
 block scripts
     link(href='/css/index.css', rel='stylesheet')
     link(href='/css/nav.css', rel='stylesheet')
-    script(src='/js/subscription.js')
+    link(href='/css/about.css', rel='stylesheet')
+    link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous")
+    
 block content
-    h1 ABOUT US
+    img(class="img-responsive" src="img/aboutus.png" alt="Please wait")
+    img(class='about1-img' src="img/about1.jpg" alt="Please wait")
   
+    p.about-paragraph 
+    
+        |Vietnamese cuisine encompasses the foods and beverages of Vietnam, and features a combination of five fundamental tastes in the overall meal. 
+    p.about-paragraph    
+        |Each Vietnamese dish has a distinctive flavor which reflects one or more of these elements. Common ingredients include fish sauce, shrimp paste, soy sauce, rice, fresh herbs, fruit and vegetables. Vietnamese recipes use lemongrass, ginger, mint, Vietnamese mint, long coriander, Saigon cinnamon, bird's eye chili, lime, and Thai basil leaves. Traditional Vietnamese cooking is greatly admired for its fresh ingredients, minimal use of dairy and oil, complementary textures, and reliance on herbs and vegetables. With the balance between fresh herbs and meats and a selective use of spices to reach a fine taste, Vietnamese food is considered one of the healthiest cuisines worldwide
+    img(class='about2-img' src="img/about2.jpg" alt="Please wait")
+    p.about-paragraph 
+        |Vietnamese cuisine has been influenced over the centuries by Chinese cooking, yet it retains its own distinctive mix of harmonious flavors, colors and textures.
+
+    p.about-paragraph 
+        |Vietnamese cuisine doesn't win any points for complexity. Many of the most popular dishes can be made just as well on the side of the road as in a top-end restaurant. But it's precisely this simplicity, the subtle variations by region and the fresh ingredients, that keep us pulling up a plastic stool for more
+    p.strong   
+        |Explore our menu and Let us serve you the best Vietnamese food in the town!!!
 block foot
-    div Reserve for footer place
+    +footer

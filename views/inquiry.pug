@@ -1,0 +1,21 @@
+extends ./layout.pug
+include sub-mixin
+include menu-mixin
+include footer-mixin
+block menu
+    +subscription
+    +menu
+block scripts
+    link(href='/css/contact.css', rel='stylesheet')
+    link(href='/css/nav.css', rel='stylesheet')
+    link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous")
+block content
+    .shopping-cart
+        // Title
+        h2
+            | Your message is submitted
+    if !noMessage
+        .success
+            p= successMsg
+block foot
+    +footer

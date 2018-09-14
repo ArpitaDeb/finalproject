@@ -1,8 +1,23 @@
+.row{
+
+}
+.card-picture {
+    width:33%; 
+    float: left;
+}
+#loyal {
+    width:300px;
+    height: 533px;
+    padding-left: 50px;
+
+
+}
 .form-style-10{
-    width:450px;
+    float: left;
+    width:33%;
     padding:30px;
-    margin:40px auto;
-    background: #FFF;
+   
+    background: rgba(239,181,107);
     border-radius: 10px;
     -webkit-border-radius:10px;
     -moz-border-radius: 10px;
@@ -12,12 +27,12 @@
 }
 .form-style-10 .inner-wrap{
     padding: 30px;
-    background: #F8F8F8;
+    background:rgba(113,141,56);
     border-radius: 6px;
     margin-bottom: 15px;
 }
 .form-style-10 h1{
-    background:  rgb(39, 138, 52);
+    background:  rgb(88, 92, 41);;
     padding: 20px 30px 15px 30px;
     margin: -30px -30px 30px -30px;
     border-radius: 10px 10px 0 0;
@@ -38,8 +53,8 @@
 }
 .form-style-10 label{
     display: block;
-    font: 13px Arial, Helvetica, sans-serif;
-    color: #888;
+    font: 15px Arial, Helvetica, sans-serif;
+    color: white;
     margin-bottom: 15px;
 }
 .form-style-10 input[type="text"],
@@ -70,7 +85,7 @@
 
 .form-style-10 .section{
     font: normal 20px 'Bitter', serif;
-    color:  rgb(39, 138, 52);
+    color:  rgb(88, 92, 41);
     margin-bottom: 5px;
 }
 .form-style-10 .section span {

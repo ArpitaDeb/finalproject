@@ -5,6 +5,8 @@ var bodyParser = require('body-parser');
 const express = require('express');
 var Cart= require('./models/cart');
 var Product= require('./models/products');
+var Order= require('./models/order');
+var Inquiry = require('./models/inquiry');
 var session = require('express-session')
 //var csrfProtection =csrf();
 var passport = require('passport');
@@ -60,24 +62,61 @@ app.get('/signup',(req, res,next) => {
 });
 
 app.post('/signup', passport.authenticate('local.signup',{
-  successRedirect: '/profile',
+ 
   failureRedirect:'/signup',
-  failureFlash: true
-}));
+  failureFlash: true})
+,function(req,res,next){
+  if(req.session.oldUrl){
+    var oldUrl =req.session.oldUrl;
+
+   
+    res.redirect(req.session.oldUrl);
+    req.session.oldUrl =null;
+  }
+  else{
+    res.direct('/profile');
+  }
+});
 
 app.get('/profile',(req, res,next) => {
-  res.render('profile',{ title: 'Vietnamese Kitchen - Profile', h1: 'HOME' });
+  Order.find({user:req.user},function(err,orders){
+    if(err){
+      return res.write(error);
+    }
+    var cart;
+    orders.forEach(function(order){
+      cart = new Cart(order.cart);
+      order.items = cart.generateArray();
+    });
+    res.render('profile',{ title: 'Vietnamese Kitchen - Profile', orders: orders});
+   
+  });
+  
 });
 app.get('/signin',(req, res,next) => {
+  if(!req.isAuthenticated()){
   var messages= req.flash('error');
   res.render('signin', {messages: messages, hasErrors: messages.length >0}); 
+  }
+  else {
+    res.redirect('/profile');
+  }
 });
 
 app.post('/signin', passport.authenticate('local.signin',{
-  successRedirect: '/profile',
   failureRedirect:'/signin',
   failureFlash: true
-}));
+}),function(req,res,next){
+  if(req.session.oldUrl){
+    var oldUrl =req.session.oldUrl;
+    
+    res.redirect(req.session.oldUrl);
+    req.session.oldUrl =null;
+  }
+  else{
+    res.redirect('/profile');
+  }
+});
 
 //pull menu images from database
 app.get('/menu', (req, res) => {
@@ -107,18 +146,136 @@ app.get('/add-to-cart/:id', function(req,res,next){
   })
 });
 app.get('/shopping', (req, res) => {
+  var  successMsg =req.flash('success');
   if(!req.session.cart) {
-    res.render('shopping', { products: null});
+    res.render('shopping', { products: null, successMsg: successMsg});
+  }
+  else{
+  var cart = new Cart (req.session.cart);
+  res.render('shopping',{products: cart.generateArray(),totalPrice: cart.totalPrice, successMsg: successMsg});
+  }
+});
+//add new quantity to the shopping cart
+app.get('/addone/:id', function(req,res,next){
+  var productID = req.params.id;
+  var cart = new Cart(req.session.cart ? req.session.cart: {items: {}}); //check if the cart is existing, if not existing, paste an empty object
+ Product.findById(productID, function(err,product){
+    if (err) {
+      return res.redirect('/');
+      console.log('Fail');
+    }
+    cart.add(product, product.id);
+    req.session.cart= cart;
+    console.log(req.session.cart);
+    res.redirect('/shopping');
+  })
+});
+//remove quantity in the shopping cart
+app.get('/removeone/:id', function(req,res,next){
+  var productID = req.params.id;
+  var cart = new Cart(req.session.cart ? req.session.cart: {items: {}}); //check if the cart is existing, if not existing, paste an empty object
+ Product.findById(productID, function(err,product){
+    if (err) {
+      return res.redirect('/');
+      console.log('Fail');
+    }
+    cart.remove(product, product.id);
+    req.session.cart= cart;
+    console.log(req.session.cart);
+    res.redirect('/shopping');
+  });
+});
+//check-out page
+app.get('/checkout', isLoggedIn, function(req,res,next){
+  if(!req.session.cart) {
+    res.redirect('shopping', { products: null});
+  }
+  var errMsg= req.flash('error')[0];
+  var cart = new Cart (req.session.cart);
+ 
+  res.render('checkout', {products: cart.generateArray(),totalPrice: cart.totalPrice, errMsg: errMsg, noError: !errMsg});
+});
+//post checkout page
+
+app.post('/checkout',isLoggedIn, function(req,res,next) {
+
+  if(!req.session.cart) {
+    res.redirect('shopping', { products: null});
   }
   var cart = new Cart (req.session.cart);
-    res.render('shopping',{products: cart.generateArray(),totalPrice: cart.totalPrice});
+  var stripe = require("stripe")("sk_test_qoQtbGhMjEzdFytyPuRPRkTc");
+  var token = req.body.stripeToken; // Using Express
+  console.log(token);
+  console.log(req.body);
+  charge = stripe.charges.create({
+  amount: cart.totalPrice*100,
+  currency: 'cad',
+  description: 'charge from VNMESE',
+  source: token,
+  capture: false,
+},function(err,charge){
+  if (err){
+    var messages= req.flash('error');
+    
+    req.flash('error',err.message);
+  return res.redirect('/checkout');
+}
+  else {
+    var order= new Order({
+      user:req.user,
+      cart: cart,
+      address: req.body.address,
+      name: req.body.name,
+      paymentID: charge.id
+
+    });
+    order.save(function(err,result){
+    var successMsg = req.flash('success', 'Successfully bought product');
+    req.session.cart = null;
+    res.redirect('/shopping');
+  });
+  }
+});
+
+
+});
+
+app.get('/logout', (req, res) => {
+  req.logout();
+  res.redirect('/signin');
 
 });
 app.get('/contact', (req, res) => {
   res.render('contact', { title: 'Vietnamese Corner - CONTACT US', h1: 'CONTACT US' });
 });
+app.post('/inquiry',(req,res)=>{
+  var inquiry = new Inquiry ({
+    name: req.body.name,    
+    email: req.body.email, 
+    message: req.body.message
+  });
+  inquiry.save(function(err,result){
+    var successMsg = req.flash('success','Thank you for message. We will contact you shortly. ')
+    res.render('inquiry',{successMsg: 'Thank you for message. We will contact you shortly. '});
+    console.log(inquiry);
+  })
+
+});
 app.get('/about', (req, res) => {
   res.render('about', { title: 'Vietnamese Corner - ABOUT US', h1: 'ABOUT US' });
 });
+function isLoggedIn(req,res,next){
+  if(req.isAuthenticated()){
+    return next();
+  }
+  req.session.oldUrl = req.url;
+  res.redirect('/signin');
+}
+function notLoggedIn (req,res,next){
+  if(!req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect('/signin');
+}
 
 app.listen(3000);

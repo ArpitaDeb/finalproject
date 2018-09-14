@@ -2,6 +2,7 @@ extends ./layout.pug
 include sub-mixin
 include menu-mixin
 include product-mixin
+include footer-mixin
 block menu
     +subscription
     +menu
@@ -17,4 +18,4 @@ block content
             h1 FRESH GREEN AND HEALTHY
             a(class="info" href ='/menu' target='_self') Order here
 block foot
-    div Reserve for footer place 
+    +footer

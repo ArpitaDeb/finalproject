@@ -10,13 +10,34 @@ module.exports = function Cart(oldCart) { // add oldCart in order to add product
             storedItem = this.items[id] = {item: item, qty:0, price:0};
         }
             storedItem.qty++
+            storedItem.name =storedItem.item.name;
             storedItem.price =storedItem.item.price*storedItem.qty;
             storedItem.priceunit = storedItem.item.price;
             storedItem.description= storedItem.item.description;
             storedItem.image= storedItem.item.imagePath;
+            storedItem._id= storedItem.item._id;
             this.totalQty++;
             this.totalPrice +=storedItem.item.price;
         };
+        //remove an item
+    this.remove = function(item,id) {
+        var storedItem = this.items[id]; //item here is the object
+        if (!storedItem) {
+            //create a new one
+            storedItem = this.items[id] = {item: item, qty:0, price:0};
+        }
+            storedItem.qty--
+            storedItem.name =storedItem.item.name;
+            storedItem.price =storedItem.item.price*storedItem.qty;
+            storedItem.priceunit = storedItem.item.price;
+            storedItem.description= storedItem.item.description;
+            storedItem.image= storedItem.item.imagePath;
+            storedItem._id=storedItem.item._id;
+            this.totalQty--;
+            this.totalPrice -=storedItem.item.price;
+        };
+    
+
     this.generateArray = function(){ //tranform the items in cart into array in order to display
         var arr =[];
         for (var id=[] in this.items){
@@ -24,5 +45,5 @@ module.exports = function Cart(oldCart) { // add oldCart in order to add product
         }
         return arr;
     };
-    };
+};
 

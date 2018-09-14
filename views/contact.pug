@@ -1,22 +1,49 @@
 extends ./layout.pug
 include sub-mixin
 include menu-mixin
-include product-mixin
+include footer-mixin
 block menu
     +subscription
     +menu
 block scripts
     link(href='/css/contact.css', rel='stylesheet')
     link(href='/css/nav.css', rel='stylesheet')
-    script(src='/js/subscription.js')
-block content
-    .form-style-6
-        h1 Contact Us
-        form
-            input(type='text' name='field1' placeholder='Your Name')
-            input(type='email' name='field2' placeholder='Email Address')
-            textarea(name='field3' placeholder='Type your Message')
-            input(type='submit' value='Send')
+    link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous")
+ 
+    
+    script(src="/js/map.js")
+    script(async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0N5B0-crFQCoPg0im5YI8QHfte2e2TyQ&callback=init_map")
 
+block content
+    img(class="img-responsive" src="img/contact.png" alt="Please wait")
+    .row
+        .office-hour
+            h2 Saskatoon restaurants and Openning Hours
+            img(class="restaurant" src="img/restaurant.jpg" alt="Please wait")
+            .office1
+               
+                h3 Midtown Plaza
+                p Unit 93 - 1st Ave N, S7J 3P7, Saskatoon
+                p Telephone: (306) 505 5555
+            .office2
+                
+                h3 Market Mall
+                p Unit 111 - 2325 Preston Avenue, S7J 2G2, Saskatoon
+                p Telephone: (306) 374 2644
+            h2 Email Address
+            p vietnamese-kitchen@sasktel.com
+            h2 Facebook
+            p www.facebook.com/vietnamese-kitchen
+
+        .form-style-6
+            h1 Send us your message/feedback.
+            form(action= "/inquiry" method="POST" )
+                input(type='text' name='name' placeholder='Your Name')
+                input(type='email' name='email' placeholder='Email Address')
+                textarea(name='message' placeholder='Type your Message')
+                input(type='submit' value='Send')
+            .div
+            #gmap_canvas
+          
 block foot
-    div Reserve for footer place
+    +footer

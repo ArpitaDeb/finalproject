@@ -1,17 +1,32 @@
+*{
+    box-sizing: border-box;
+}
+.row:after {
+    content:"";
+    display: table;
+    clear:both;
+
+}
+  
+.office-hour {
+    width: 50%;
+    float:left;
+}
 .form-style-6{
     font: 95% Arial, Helvetica, sans-serif;
-    max-width: 500px;
+    width: 50%;
     margin: 10px auto;
     padding: 16px;
     background: #F7F7F7;
+    float:right;
 }
 .form-style-6 h1{
-    background: rgb(39, 138, 52);
+    background:rgb(99, 202, 112);
     padding: 20px 0;
     font-size: 140%;
     font-weight: 300;
     text-align: center;
-    color: #fff;
+    color: white;
     margin: -16px -16px 16px -16px;
 }
 .form-style-6 input[type="text"],
@@ -64,7 +79,7 @@
     -moz-box-sizing: border-box;
     width: 100%;
     padding: 3%;
-    background: rgb(39, 138, 52);
+    background: rgb(99, 202, 112);
     border-bottom: 2px solid #30C29E;
     border-top-style: none;
     border-right-style: none;

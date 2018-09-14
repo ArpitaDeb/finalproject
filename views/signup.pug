@@ -1,6 +1,7 @@
 extends ./layout.pug
 include sub-mixin
 include menu-mixin
+include footer-mixin
 block menu
     +subscription
     +menu
@@ -11,29 +12,34 @@ block scripts
     link(href='/css/signup.css', rel='stylesheet')
     script(src='/js/subscription.js')
 block content
-  .form-style-10
-  
-    h1
-      | Sign Up Now!
-      span Enter your email address to receive fresh daily menu and promotion code
-    if hasErrors
-        .warning
-          p= messages
-    form(action= "/signup" method="POST" value=csrfToken)
-      .section
-        span 1
-        | Email 
-      .inner-wrap
-        label
-          | Email Address 
-          input(type='email' name='email')
-      .section
-        span 2
-        | Passwords
-      .inner-wrap
-        label
-          | Password 
-          input(type='password' name='password')
-      .button-section
-        input(type='submit' name='Sign Up' value='Sign Up')
-    p= csrfToken
+  .row
+    .card-picture
+      img(src='img/loyalty card.jpg', id='loyal', alt='image is loading.Please wait!')
+    .form-style-10
+    
+      h1
+        | Sign Up Now!
+        span Enter your email address to receive fresh daily menu and promotion code
+      if hasErrors
+          .warning
+            p= messages
+      form(action= "/signup" method="POST" value=csrfToken)
+        .section
+          span 1
+          | Email 
+        .inner-wrap
+          label
+            | Email Address 
+            input(type='email' name='email')
+        .section
+          span 2
+          | Passwords
+        .inner-wrap
+          label
+            | Password 
+            input(type='password' name='password')
+        .button-section
+          input(type='submit' name='Sign Up' value='Sign Up')
+      p= csrfToken
+block foot
+    +footer
