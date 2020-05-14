@@ -1,11 +1,11 @@
 {
-  "name": "nodejs_finalproject",
+  "name": "kelyproject",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "mocha"
   },
   "keywords": [],
   "author": "",
@@ -22,7 +22,7 @@
     "express-session": "^1.15.6",
     "express-validator": "^5.3.0",
     "mongodb": "^3.1.1",
-    "mongoose": "^5.2.8",
+    "mongoose": "^5.4.22",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "pug": "^2.0.3",
@@ -30,5 +30,13 @@
   },
   "devDependencies": {
     "mocha": "^5.2.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bonbabuma/finalproject.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bonbabuma/finalproject/issues"
+  },
+  "homepage": "https://github.com/bonbabuma/finalproject#readme"
 }
